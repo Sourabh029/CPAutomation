@@ -1,21 +1,20 @@
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
 import java.io.IOException;
 
 public class Creation {
 
 
     public String runner(int i) throws InterruptedException, IOException {
-        int lastNameCounter=i;
+        int lastNameCounter = i;
 
-        System.setProperty("webdriver.chrome.driver","E:\\Programing\\Sellenium\\chromedriver_win32 (2)\\chromedriver.exe");
-        WebDriver d= new ChromeDriver();
+        System.setProperty("webdriver.chrome.driver", "E:\\Programing\\Sellenium\\chromedriver_win32 (2)\\chromedriver.exe");
+        WebDriver d = new ChromeDriver();
 
         d.get("https://stage.portal.gbbdev.co.uk/Registration/");
         //*[@id="l1-2_1-LandingCard"]/div[4]/button
@@ -25,13 +24,23 @@ public class Creation {
         //*[@id="Btn"]/button
 
         //Page1
-        Thread.sleep(10000);
-        d.findElement(By.xpath("(//div[@class=\"LandingCardBtn\"]/button/span)[1]")).click();
+        Page1 page1 = new Page1();
+        Page2 page2 = new Page2();
 
 
-        //Page2
-        Thread.sleep(5000);
-        d.findElement(By.xpath("//*[@id=\"Button\"]/button")).click();
+        try {
+            page1.openPage1(d);
+        } catch (NoSuchElementException e) {
+            page1.openPage1(d);
+        }
+
+        try {
+            page2.openPage2(d);
+        } catch (NoSuchElementException e)
+        {
+            page2.openPage2(d);
+        }
+
 
 
         //Page3
