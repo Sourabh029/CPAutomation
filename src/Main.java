@@ -11,12 +11,14 @@ import java.io.IOException;
 public class Main {
     public static void main(String[] args) throws InterruptedException, IOException {
         Creation cr = new Creation();
-        int i = 9;
+        int i = 2;
         BufferedWriter writer = null;
-        for (int j = 0; j < 2; j++) {
+        writer = new BufferedWriter(new FileWriter("E:\\Programing\\Sellenium\\NewAccDetails\\outputA1.txt"));
+        for (int j = 0; j < 10; j++) {
             String accNo = cr.runner(i);
-            writer = new BufferedWriter(new FileWriter("E:\\Programing\\Sellenium\\NewAccDetails\\output3.txt"));
+
             writer.write(accNo);
+            writer.newLine();
             i++;
         }
 //       String accNo = cr.runner(i);
