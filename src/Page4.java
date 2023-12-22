@@ -8,11 +8,12 @@ public class Page4 {
 
     WebDriver d;
     int lastCounter;
-    int phoneNo=100+lastCounter;
+
     public void set(int i)
     {
         this.lastCounter=i;
     }
+    int phoneNo=100+lastCounter;
 
     public WebDriver getD() {
         return d;
@@ -28,7 +29,7 @@ public class Page4 {
         Select s= new Select(dropdown);
         s.selectByValue("4");
         d.findElement(By.xpath("//*[@id=\"Input_TextVar13\"]")).sendKeys("Testing");
-        d.findElement(By.xpath("//*[@id=\"Input_TextVar14\"]")).sendKeys(""+lastCounter);
+        d.findElement(By.xpath("//*[@id=\"Input_TextVar14\"]")).sendKeys("Auto"+lastCounter);
         d.findElement(By.xpath("//*[@id=\"Day\"]")).sendKeys("10");
         d.findElement(By.xpath("//*[@id=\"Month\"]")).sendKeys("10");
         d.findElement(By.xpath("//*[@id=\"Year\"]")).sendKeys("2000");

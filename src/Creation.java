@@ -11,7 +11,7 @@ import java.io.IOException;
 public class Creation {
 
 
-    public String runner(int i) throws InterruptedException, IOException {
+    public String runner(int i,WebDriver d) throws InterruptedException, IOException {
         int lastNameCounter = i;
 
         //System.setProperty("webdriver.chrome.driver", "E:\\Programing\\Sellenium\\chromedriver_win32 (2)\\chromedriver.exe");
@@ -22,8 +22,8 @@ public class Creation {
 
 
 
-        System.setProperty("webdriver.gecko.driver", "E:\\Programing\\Sellenium\\geckodriver-v0.33.0-win32\\geckodriver.exe");
-        WebDriver d = new FirefoxDriver();
+        //System.setProperty("webdriver.gecko.driver", "E:\\Programing\\Sellenium\\geckodriver-v0.33.0-win32\\geckodriver.exe");
+        //WebDriver d = new FirefoxDriver();
 
         d.get("https://stage.portal.gbbdev.co.uk/Registration/");
         //*[@id="l1-2_1-LandingCard"]/div[4]/button
@@ -81,10 +81,14 @@ public class Creation {
         //Page10
         page10.openPage10(d);
 
-        if(d.getCurrentUrl().equals("https://stage.portal.gbbdev.co.uk/Application/Success"))
+        Thread.sleep(15000);
+        System.out.println(d.getCurrentUrl());
+        if(d.getCurrentUrl().equals("https://stage.portal.gbbdev.co.uk/Registration/Success"))
         {
+            System.out.println(d.getCurrentUrl());
             accNo = page11.openPage11(d);
             page12.openPage12(d);
+            System.out.println(accNo);
         }
         else {
             try {
@@ -94,13 +98,22 @@ public class Creation {
             catch (NoSuchElementException e)
             {
                 Thread.sleep(5000);
-                d.findElement(By.xpath("//*[@id=\"b2-Actions\"]/button")).click();
-            }
+                try{
+                    System.out.println(d.getCurrentUrl());
+                    accNo = page11.openPage11(d);
+                    page12.openPage12(d);
+                    System.out.println(accNo);
+                }
+                catch (NoSuchElementException e1) {
+                    d.findElement(By.xpath("//*[@id=\"b2-Actions\"]/button")).click();
+                }
+                }
             Thread.sleep(10000);
             d.findElement(By.xpath("//*[@id=\"InnerLeftColumn\"]/a[2]/div")).click();
-            Thread.sleep(5000);
-            accNo=d.findElement(By.xpath("//*[@id=\"l1-9_0-b4-AccountNumber\"]/span[2]")).getText();
             Thread.sleep(10000);
+            accNo=d.findElement(By.xpath("/html/body/div/div/div/div/div[3]/div[2]/div[1]/div[2]/div/div/div/div[1]/div[7]/div[1]/span[2]")).getText();
+            Thread.sleep(10000);
+            System.out.println(accNo);
             d.findElement(By.xpath("//*[@id=\"b1-Icon3\"]")).click();
             //Page11
 
