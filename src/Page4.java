@@ -1,7 +1,4 @@
-import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.Select;
 
 public class Page4 {
@@ -24,7 +21,7 @@ public class Page4 {
     }
 
     public void openPage4Driver() throws InterruptedException {
-        Thread.sleep(10000);
+        Thread.sleep(2000);
         WebElement dropdown= d.findElement(By.xpath("//*[@id=\"TitleList\"]"));
         Select s= new Select(dropdown);
         s.selectByValue("4");
@@ -44,7 +41,7 @@ public class Page4 {
         try {
             openPage4Driver();
         }
-        catch (NoSuchElementException | InterruptedException e)
+        catch (NoSuchElementException | InterruptedException  |ElementClickInterceptedException e)
         {
             openPage4();
         }

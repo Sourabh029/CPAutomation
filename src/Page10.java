@@ -6,7 +6,7 @@ import org.openqa.selenium.WebDriver;
 public class Page10 {
 
     void page10Runner(WebDriver d) throws InterruptedException {
-        Thread.sleep(8000);
+        Thread.sleep(2000);
 
         d.findElement(By.xpath("//*[@id=\"SummaryBoxCheckBox\"]")).click();
         d.findElement(By.xpath("//*[@id=\"TermsConsent\"]")).click();

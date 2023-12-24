@@ -7,7 +7,7 @@ import org.openqa.selenium.support.ui.Select;
 public class Page8 {
 
     void page8Runner(WebDriver d) throws InterruptedException {
-        Thread.sleep(5000);
+        Thread.sleep(2000);
         d.findElement(By.xpath("//*[@id=\"Input_AddressLine1\"]")).sendKeys("12 Imperial House");
         d.findElement(By.xpath("//*[@id=\"Input_City\"]")).sendKeys("Aberdeen");
         d.findElement(By.xpath("//*[@id=\"Input_PostalCode4\"]")).sendKeys("AB11 6PH");

@@ -8,12 +8,12 @@ public class Page3 {
     public void openPage3(WebDriver d) throws InterruptedException {
 
         try {
-            Thread.sleep(5000);
+            Thread.sleep(2000);
             d.findElement(By.xpath("//*[@id=\"Btn\"]/button")).click();
         }
         catch (NoSuchElementException e)
         {
-            Thread.sleep(5000);
+            Thread.sleep(2000);
             d.findElement(By.xpath("//*[@id=\"Btn\"]/button")).click();
         }
 

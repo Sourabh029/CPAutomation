@@ -6,7 +6,7 @@ public class Page5 {
 
 
     void page5Runner (WebDriver d) throws InterruptedException {
-        Thread.sleep(5000);
+        Thread.sleep(2000);
         d.findElement(By.xpath("//*[@id=\"Bottom4\"]/div/button")).click();
     }
     void openPage5(WebDriver d) throws InterruptedException {

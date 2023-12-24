@@ -5,7 +5,7 @@ import org.openqa.selenium.WebDriver;
 public class Page12 {
 
     void page12Runner(WebDriver d) throws InterruptedException {
-        Thread.sleep(5000);
+        Thread.sleep(1000);
         d.findElement(By.xpath("//*[@id=\"b1-b2-Icon3\"]")).click();
 
     }

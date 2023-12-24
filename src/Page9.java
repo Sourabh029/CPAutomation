@@ -5,10 +5,10 @@ import org.openqa.selenium.WebDriver;
 public class Page9 {
 
     void page9Runner(WebDriver d) throws InterruptedException {
-        Thread.sleep(5000);
+        Thread.sleep(2000);
 
-        d.findElement(By.xpath("//*[@id=\"Input_SortCode\"]")).sendKeys("400551");
-        d.findElement(By.xpath("//*[@id=\"Input_Amount3\"]")).sendKeys("12345674");
+        d.findElement(By.xpath("//*[@id=\"Input_SortCode\"]")).sendKeys("800551");
+        d.findElement(By.xpath("//*[@id=\"Input_Amount3\"]")).sendKeys("00813796");
 
         d.findElement(By.xpath("//*[@id=\"Input_Amount\"]")).sendKeys("100");
 

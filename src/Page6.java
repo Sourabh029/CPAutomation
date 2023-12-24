@@ -5,7 +5,7 @@ import org.openqa.selenium.WebDriver;
 public class Page6 {
 
     void page6Runner(WebDriver d) throws InterruptedException {
-        Thread.sleep(8000);
+        Thread.sleep(2000);
         d.findElement(By.xpath("//*[@id=\"Input_Email_OTP\"]")).sendKeys("123");
         d.findElement(By.xpath("//*[@id=\"Input_MobNum_OTP\"]")).sendKeys("123");
         d.findElement(By.xpath("//*[@id=\"Email\"]/div[2]/div[3]/button")).click();

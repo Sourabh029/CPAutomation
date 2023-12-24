@@ -1,7 +1,4 @@
-import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.Select;
@@ -81,7 +78,7 @@ public class Creation {
         //Page10
         page10.openPage10(d);
 
-        Thread.sleep(18000);
+        Thread.sleep(10000);
         System.out.println(d.getCurrentUrl());
         if(d.getCurrentUrl().equals("https://stage.portal.gbbdev.co.uk/Registration/Success"))
         {
@@ -91,13 +88,22 @@ public class Creation {
             System.out.println(accNo);
         }
         else {
-            try {
-                Thread.sleep(15000);
-                d.findElement(By.xpath("//*[@id=\"Navigate\"]/div[1]/button")).click();
-                Thread.sleep(10000);
-                accNo = codeBreak(d);
+            Thread.sleep(8000);
+            if(d.getCurrentUrl().equals("https://stage.portal.gbbdev.co.uk/Registration/Success"))
+            {
+                System.out.println(d.getCurrentUrl());
+                accNo = page11.openPage11(d);
+                page12.openPage12(d);
+                System.out.println(accNo);
             }
-            catch (NoSuchElementException e)
+            else{
+                try {
+                  Thread.sleep(2000);
+                   d.findElement(By.xpath("//*[@id=\"Navigate\"]/div[1]/button")).click();
+                  Thread.sleep(1000);
+                  accNo = codeBreak(d);
+            }
+            catch (NoSuchElementException | ElementClickInterceptedException e)
             {
                 if(d.getCurrentUrl().equals("https://stage.portal.gbbdev.co.uk/Registration/Success"))
                 {
@@ -106,12 +112,23 @@ public class Creation {
                     page12.openPage12(d);
                     System.out.println(accNo);
                 }
-                else
-                {
-                    Thread.sleep(15000);
-                    d.findElement(By.xpath("//*[@id=\"Navigate\"]/div[1]/button")).click();
-                    Thread.sleep(10000);
-                    accNo = codeBreak(d);
+                else {
+                    try {
+
+
+                        Thread.sleep(3000);
+                        d.findElement(By.xpath("//*[@id=\"Navigate\"]/div[1]/button")).click();
+                        Thread.sleep(1000);
+                        accNo = codeBreak(d);
+                    } catch (Exception e3) {
+                        Thread.sleep(3000);
+                        d.findElement(By.xpath("/html/body/div/div/div/div/div[2]/div[1]/a[2]")).click();
+                        Thread.sleep(3000);
+                        d.findElement(By.xpath("//*[@id=\"Navigate\"]/div[1]/button")).click();
+                        Thread.sleep(1000);
+                        accNo = codeBreak(d);
+                    }
+                }
                 }
             }
             /*catch (NoSuchElementException e)
@@ -149,19 +166,51 @@ public class Creation {
 
 
 
+    public String pauseJourneyTryAgain(WebDriver d) throws InterruptedException {
+        String accNo;
+        try {
+            Thread.sleep(3000);
+            d.findElement(By.xpath("/html/body/div/div/div/div/div[2]/div[1]/a[2]")).click();
+            Thread.sleep(3000);
+            d.findElement(By.xpath("//*[@id=\"Navigate\"]/div[1]/button")).click();
+            Thread.sleep(1000);
+            accNo = codeBreak(d);
+            return accNo;
+        }
+        catch (NoSuchElementException  | ElementClickInterceptedException e)
+        {
+            accNo=pauseJourneyTryAgain(d);
+
+        }
+        return accNo;
+    }
+
 
 
     public String codeBreak(WebDriver d) throws InterruptedException {
 
             String accNo;
-            Thread.sleep(10000);
-            d.findElement(By.xpath("//*[@id=\"InnerLeftColumn\"]/a[2]/div")).click();
-            Thread.sleep(10000);
-            accNo = d.findElement(By.xpath("/html/body/div/div/div/div/div[3]/div[2]/div[1]/div[2]/div/div/div/div[1]/div[7]/div[1]/span[2]")).getText();
-            Thread.sleep(10000);
-            System.out.println(accNo);
-            d.findElement(By.xpath("//*[@id=\"b1-Icon3\"]")).click();
-            return accNo;
+            //Thread.sleep(10000);
+            //d.findElement(By.xpath("//*[@id=\"InnerLeftColumn\"]/a[2]/div")).click();
+            try {
+                Thread.sleep(1000);
+                accNo = d.findElement(By.xpath("/html/body/div/div/div/div/div[3]/div[2]/div[1]/div[2]/div/div/div/div[1]/div[7]/div[1]/span[2]")).getText();
+                Thread.sleep(1000);
+                System.out.println(accNo);
+                d.findElement(By.xpath("//*[@id=\"b1-Icon3\"]")).click();
+                return accNo;
+            }
+            catch (NoSuchElementException e)
+            {
+                Thread.sleep(3000);
+                accNo = d.findElement(By.xpath("/html/body/div/div/div/div/div[3]/div[2]/div[1]/div[2]/div/div/div/div[1]/div[7]/div[1]/span[2]")).getText();
+                Thread.sleep(2000);
+                System.out.println(accNo);
+                d.findElement(By.xpath("//*[@id=\"b1-Icon3\"]")).click();
+
+                return accNo;
+            }
+
 
     }
 

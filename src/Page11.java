@@ -5,7 +5,7 @@ import org.openqa.selenium.WebDriver;
 public class Page11 {
     String accNo;
     void page11Runner(WebDriver d) throws InterruptedException {
-        Thread.sleep(10000);
+        //Thread.sleep(1000);
         accNo =d.findElement(By.xpath("//*[@id=\"b3-Column2\"]/span")).getText();//*[@id="b3-Column2"]/span
         System.out.println(accNo);
 

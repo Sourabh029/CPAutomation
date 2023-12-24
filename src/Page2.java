@@ -1,4 +1,5 @@
 import org.openqa.selenium.By;
+import org.openqa.selenium.ElementClickInterceptedException;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 
@@ -8,7 +9,7 @@ public class Page2 {
 
 
     public void openPage2Driver(WebDriver d) throws InterruptedException {
-        Thread.sleep(5000);
+        Thread.sleep(2000);
         d.findElement(By.xpath("//*[@id=\"Button\"]/button")).click();
 
     }
@@ -18,7 +19,7 @@ public class Page2 {
         {
             openPage2Driver(d);
         }
-        catch (NoSuchElementException e)
+        catch (NoSuchElementException | ElementClickInterceptedException e)
         {
             openPage2(d);
         }

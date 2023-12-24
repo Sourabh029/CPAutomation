@@ -6,12 +6,12 @@ public class Page1 {
 
     public  void openPage1(WebDriver d) throws InterruptedException {
         try {
-            Thread.sleep(10000);
+            Thread.sleep(5000);
             d.findElement(By.xpath("(//div[@class=\"LandingCardBtn\"]/button/span)[1]")).click();
         }
         catch (NoSuchElementException e)
         {
-            Thread.sleep(10000);
+            Thread.sleep(5000);
             d.findElement(By.xpath("(//div[@class=\"LandingCardBtn\"]/button/span)[1]")).click();
         }
     }
