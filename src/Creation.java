@@ -81,7 +81,7 @@ public class Creation {
         //Page10
         page10.openPage10(d);
 
-        Thread.sleep(15000);
+        Thread.sleep(18000);
         System.out.println(d.getCurrentUrl());
         if(d.getCurrentUrl().equals("https://stage.portal.gbbdev.co.uk/Registration/Success"))
         {
@@ -94,30 +94,53 @@ public class Creation {
             try {
                 Thread.sleep(15000);
                 d.findElement(By.xpath("//*[@id=\"Navigate\"]/div[1]/button")).click();
+                Thread.sleep(10000);
+                accNo = codeBreak(d);
             }
             catch (NoSuchElementException e)
             {
-                Thread.sleep(5000);
-                try{
+                if(d.getCurrentUrl().equals("https://stage.portal.gbbdev.co.uk/Registration/Success"))
+                {
                     System.out.println(d.getCurrentUrl());
                     accNo = page11.openPage11(d);
                     page12.openPage12(d);
                     System.out.println(accNo);
                 }
-                catch (NoSuchElementException e1) {
+                else
+                {
+                    Thread.sleep(15000);
+                    d.findElement(By.xpath("//*[@id=\"Navigate\"]/div[1]/button")).click();
+                    Thread.sleep(10000);
+                    accNo = codeBreak(d);
+                }
+            }
+            /*catch (NoSuchElementException e)
+            {
+                Thread.sleep(5000);
+
+                    System.out.println(d.getCurrentUrl());
+
+                    accNo = page11.openPage11(d);
+                    page12.openPage12(d);
+                    System.out.println(accNo);
+
+
+                    Thread.sleep(5000);
                     d.findElement(By.xpath("//*[@id=\"b2-Actions\"]/button")).click();
+                    accNo = codeBreak(d);
+                   */
+
+
+
+
+
+
                 }
-                }
-            Thread.sleep(10000);
-            d.findElement(By.xpath("//*[@id=\"InnerLeftColumn\"]/a[2]/div")).click();
-            Thread.sleep(10000);
-            accNo=d.findElement(By.xpath("/html/body/div/div/div/div/div[3]/div[2]/div[1]/div[2]/div/div/div/div[1]/div[7]/div[1]/span[2]")).getText();
-            Thread.sleep(10000);
-            System.out.println(accNo);
-            d.findElement(By.xpath("//*[@id=\"b1-Icon3\"]")).click();
+
+
             //Page11
 
-
+        return accNo;
         }
 
         //  BufferedWriter writer = new BufferedWriter(new FileWriter("E:\\Programing\\Sellenium\\NewAccDetails\\output.txt"));
@@ -125,7 +148,22 @@ public class Creation {
        // writer.close();
 
 
-        return accNo;
+
+
+
+    public String codeBreak(WebDriver d) throws InterruptedException {
+
+            String accNo;
+            Thread.sleep(10000);
+            d.findElement(By.xpath("//*[@id=\"InnerLeftColumn\"]/a[2]/div")).click();
+            Thread.sleep(10000);
+            accNo = d.findElement(By.xpath("/html/body/div/div/div/div/div[3]/div[2]/div[1]/div[2]/div/div/div/div[1]/div[7]/div[1]/span[2]")).getText();
+            Thread.sleep(10000);
+            System.out.println(accNo);
+            d.findElement(By.xpath("//*[@id=\"b1-Icon3\"]")).click();
+            return accNo;
+
     }
+
     }
 
