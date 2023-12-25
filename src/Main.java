@@ -12,11 +12,11 @@ import java.io.IOException;
 public class Main {
     public static void main(String[] args) throws InterruptedException, IOException {
         Creation cr = new Creation();
-        int i = 139;
+        int i = 206;
         BufferedWriter writer = null;
         System.setProperty("webdriver.gecko.driver", "E:\\Programing\\Sellenium\\geckodriver-v0.33.0-win32\\geckodriver.exe");
         WebDriver d = new FirefoxDriver();
-        for (int j = 0; j < 20; j++) {
+        for (int j = 0; j < 30; j++) {
             String accNo = cr.runner(i,d);
             accNo+=" ";
             writer = new BufferedWriter(new FileWriter("E:\\Programing\\Sellenium\\NewAccDetails\\"+i+"-"+accNo+".txt"));

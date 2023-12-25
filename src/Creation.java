@@ -98,7 +98,7 @@ public class Creation {
             }
             else{
                 try {
-                  Thread.sleep(2000);
+                  Thread.sleep(3000);
                    d.findElement(By.xpath("//*[@id=\"Navigate\"]/div[1]/button")).click();
                   Thread.sleep(1000);
                   accNo = codeBreak(d);
@@ -118,15 +118,11 @@ public class Creation {
 
                         Thread.sleep(3000);
                         d.findElement(By.xpath("//*[@id=\"Navigate\"]/div[1]/button")).click();
-                        Thread.sleep(1000);
+                        Thread.sleep(5000);
                         accNo = codeBreak(d);
                     } catch (Exception e3) {
-                        Thread.sleep(3000);
-                        d.findElement(By.xpath("/html/body/div/div/div/div/div[2]/div[1]/a[2]")).click();
-                        Thread.sleep(3000);
-                        d.findElement(By.xpath("//*[@id=\"Navigate\"]/div[1]/button")).click();
-                        Thread.sleep(1000);
-                        accNo = codeBreak(d);
+                       accNo= pauseJourneyTryAgain(d);
+                       // accNo = codeBreak(d);
                     }
                 }
                 }
@@ -170,16 +166,19 @@ public class Creation {
         String accNo;
         try {
             Thread.sleep(3000);
-            d.findElement(By.xpath("/html/body/div/div/div/div/div[2]/div[1]/a[2]")).click();
+            d.findElement(By.xpath("/html/body/div/div/div/div/div[2]/div[1]/a[2]/div")).click();
             Thread.sleep(3000);
             d.findElement(By.xpath("//*[@id=\"Navigate\"]/div[1]/button")).click();
             Thread.sleep(1000);
             accNo = codeBreak(d);
             return accNo;
         }
-        catch (NoSuchElementException  | ElementClickInterceptedException e)
+        catch (NoSuchElementException  |  ElementNotInteractableException e)
         {
-            accNo=pauseJourneyTryAgain(d);
+            Thread.sleep(3000);
+            d.findElement(By.xpath("/html/body/div/div/div/div/div[2]/div[1]/a[2]/div")).click();
+            Thread.sleep(3000);
+            accNo = codeBreak(d);
 
         }
         return accNo;
@@ -202,6 +201,8 @@ public class Creation {
             }
             catch (NoSuchElementException e)
             {
+
+
                 Thread.sleep(3000);
                 accNo = d.findElement(By.xpath("/html/body/div/div/div/div/div[3]/div[2]/div[1]/div[2]/div/div/div/div[1]/div[7]/div[1]/span[2]")).getText();
                 Thread.sleep(2000);
